@@ -51,9 +51,9 @@ public class  MainActivity extends BaseActivity {
                     new MyTopPostsFragment(),
             };
             private final String[] mFragmentNames = new String[] {
-                    getString(R.string.heading_recent),
-                    getString(R.string.heading_my_posts),
-                    getString(R.string.heading_my_top_posts)
+                    getString(R.string.my_listing),
+                    getString(R.string.messages),
+                    getString(R.string.create_listing)
             };
             @Override
             public Fragment getItem(int position) {

@@ -11,9 +11,11 @@ import java.util.Map;
 public class Post {
 
     public String uid;
-    public String author;
+    public String poster;
     public String title;
-    public String body;
+    public String author;
+    public String isbn;
+    public String bookdesc;
     public int starCount = 0;
     public Map<String, Boolean> stars = new HashMap<>();
 
@@ -21,11 +23,13 @@ public class Post {
         // Default constructor required for calls to DataSnapshot.getValue(Post.class)
     }
 
-    public Post(String uid, String author, String title, String body) {
+    public Post(String uid, String poster, String title, String author, String isbn, String bookdesc) {
         this.uid = uid;
-        this.author = author;
+        this.poster = poster;
         this.title = title;
-        this.body = body;
+        this.author = author;
+        this.isbn = isbn;
+        this.bookdesc = bookdesc;
     }
 
     // [START post_to_map]
@@ -33,11 +37,11 @@ public class Post {
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
         result.put("uid", uid);
-        result.put("author", author);
-        result.put("title", title);
-        result.put("body", body);
-        result.put("starCount", starCount);
-        result.put("stars", stars);
+        result.put("Swappr", poster);
+        result.put("Title", title);
+        result.put("Author", author);
+        result.put("ISBN", isbn);
+        result.put("Book Description", bookdesc);
 
         return result;
     }

@@ -29,7 +29,9 @@ public class NewPostActivity extends BaseActivity {
     // [END declare_database_ref]
 
     private EditText mTitleField;
-    private EditText mBodyField;
+    private EditText mauthorField;
+    private EditText mISBNField;
+    private EditText mDescriptionField;
     private FloatingActionButton mSubmitButton;
 
     @Override
@@ -42,7 +44,9 @@ public class NewPostActivity extends BaseActivity {
         // [END initialize_database_ref]
 
         mTitleField = findViewById(R.id.field_title);
-        mBodyField = findViewById(R.id.field_body);
+        mauthorField = findViewById(R.id.field_author);
+        mISBNField = findViewById(R.id.field_isbn);
+        mDescriptionField = findViewById(R.id.field_description);
         mSubmitButton = findViewById(R.id.fab_submit_post);
 
         mSubmitButton.setOnClickListener(new View.OnClickListener() {
@@ -55,7 +59,9 @@ public class NewPostActivity extends BaseActivity {
 
     private void submitPost() {
         final String title = mTitleField.getText().toString();
-        final String body = mBodyField.getText().toString();
+        final String author = mauthorField.getText().toString();
+        final String ISBN = mISBNField.getText().toString();
+        final String bookDesc = mDescriptionField.getText().toString();
 
         // Title is required
         if (TextUtils.isEmpty(title)) {
@@ -64,10 +70,23 @@ public class NewPostActivity extends BaseActivity {
         }
 
         // Body is required
-        if (TextUtils.isEmpty(body)) {
-            mBodyField.setError(REQUIRED);
+        if (TextUtils.isEmpty(author)) {
+            mauthorField.setError(REQUIRED);
             return;
         }
+
+        // ISBN is required
+
+        if(TextUtils.isEmpty(ISBN)) {
+            mISBNField.setError(REQUIRED);
+        }
+
+        //Book Description is required
+        if(TextUtils.isEmpty(bookDesc)) {
+            mDescriptionField.setError(REQUIRED);
+        }
+
+
 
         // Disable button so there are no multi-posts
         setEditingEnabled(false);
@@ -91,7 +110,7 @@ public class NewPostActivity extends BaseActivity {
                                     Toast.LENGTH_SHORT).show();
                         } else {
                             // Write new post
-                            writeNewPost(userId, user.username, title, body);
+                            writeNewPost(userId, user.username, title, author, ISBN, bookDesc);
                         }
 
                         // Finish this Activity, back to the stream
@@ -113,7 +132,9 @@ public class NewPostActivity extends BaseActivity {
 
     private void setEditingEnabled(boolean enabled) {
         mTitleField.setEnabled(enabled);
-        mBodyField.setEnabled(enabled);
+        mauthorField.setEnabled(enabled);
+        mISBNField.setEnabled(enabled);
+        mDescriptionField.setEnabled(enabled);
         if (enabled) {
             mSubmitButton.setVisibility(View.VISIBLE);
         } else {
@@ -122,11 +143,12 @@ public class NewPostActivity extends BaseActivity {
     }
 
     // [START write_fan_out]
-    private void writeNewPost(String userId, String username, String title, String body) {
+    //TODO: change values to match database
+    private void writeNewPost(String userId, String username, String title, String author, String isbn, String bookdesc) {
         // Create new post at /user-posts/$userid/$postid and at
         // /posts/$postid simultaneously
         String key = mDatabase.child("posts").push().getKey();
-        Post post = new Post(userId, username, title, body);
+        Post post = new Post(userId, username, title, author, isbn, bookdesc);
         Map<String, Object> postValues = post.toMap();
 
         Map<String, Object> childUpdates = new HashMap<>();
