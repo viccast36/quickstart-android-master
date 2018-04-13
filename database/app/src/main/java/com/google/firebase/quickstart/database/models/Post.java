@@ -16,7 +16,6 @@ public class Post {
     public String author;
     public String isbn;
     public String bookdesc;
-    public int starCount = 0;
     public Map<String, Boolean> stars = new HashMap<>();
 
     public Post() {

@@ -84,7 +84,15 @@ public class NewPostTest {
 
         // Enter post content
         ViewInteraction appCompatEditText5 = onView(
-                allOf(withId(R.id.field_body), isDisplayed()));
+                allOf(withId(R.id.field_author), isDisplayed()));
+        appCompatEditText5.perform(replaceText(postContent));
+
+        ViewInteraction appCompatEditText6 = onView(
+                allOf(withId(R.id.field_isbn), isDisplayed()));
+        appCompatEditText5.perform(replaceText(postContent));
+
+        ViewInteraction appCompatEditText7 = onView(
+                allOf(withId(R.id.field_description), isDisplayed()));
         appCompatEditText5.perform(replaceText(postContent));
 
         // Click submit button
@@ -94,7 +102,7 @@ public class NewPostTest {
 
         // Navigate to "My Posts"
         ViewInteraction appCompatTextView = onView(
-                allOf(withText(R.string.heading_my_posts), isDisplayed()));
+                allOf(withText(R.string.my_listing), isDisplayed()));
         appCompatTextView.perform(click());
 
         // Check that the title is correct

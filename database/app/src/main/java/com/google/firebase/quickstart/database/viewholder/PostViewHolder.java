@@ -18,7 +18,7 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
 
     public PostViewHolder(View itemView) {
         super(itemView);
-
+        //need to update these values here
         titleView = itemView.findViewById(R.id.post_title);
         authorView = itemView.findViewById(R.id.post_author);
         starView = itemView.findViewById(R.id.star);

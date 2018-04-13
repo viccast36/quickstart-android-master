@@ -6,20 +6,31 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/post_title"
+        android:id="@+id/book_title"
         style="@style/TextAppearance.AppCompat.Medium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:maxLines="1"
         android:textStyle="bold"
-        tools:text="My First Post" />
+        tools:text="Book Title" />
 
     <TextView
-        android:id="@+id/post_body"
+        android:id="@+id/book_author"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        tools:text="@string/lorem" />
+        android:maxLines="1"
+        android:textStyle="bold"
+        tools:text="Last Name, First Name" />
+
+    <TextView
+        android:id="@+id/book_isbn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:maxLines="1"
+        android:textStyle="bold"
+        tools:text="ISBN" />
 
 </LinearLayout>

@@ -89,7 +89,7 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
                 // [START_EXCLUDE]
                 mAuthorView.setText(post.author);
                 mTitleView.setText(post.title);
-                mBodyView.setText(post.body);
+                mBodyView.setText(post.isbn);
                 // [END_EXCLUDE]
             }
 
