@@ -39,7 +39,9 @@ public class NewPostTest {
         String email = username + "@example.com";
         String password = "testuser";
         String postTitle = "Title " + randomDigits();
-        String postContent = "Content " + randomDigits();
+        String postAuthor = "Author " + randomDigits();
+        String postISBN = "ISBN " + randomDigits();
+        String postDesc = "Desc " + randomDigits();
 
         // Go back to the sign in screen if we're logged in from a previous test
         logOutIfPossible();
@@ -85,15 +87,15 @@ public class NewPostTest {
         // Enter post content
         ViewInteraction appCompatEditText5 = onView(
                 allOf(withId(R.id.field_author), isDisplayed()));
-        appCompatEditText5.perform(replaceText(postContent));
+        appCompatEditText5.perform(replaceText(postAuthor));
 
         ViewInteraction appCompatEditText6 = onView(
                 allOf(withId(R.id.field_isbn), isDisplayed()));
-        appCompatEditText5.perform(replaceText(postContent));
+        appCompatEditText5.perform(replaceText(postISBN));
 
         ViewInteraction appCompatEditText7 = onView(
                 allOf(withId(R.id.field_description), isDisplayed()));
-        appCompatEditText5.perform(replaceText(postContent));
+        appCompatEditText5.perform(replaceText(postDesc));
 
         // Click submit button
         ViewInteraction floatingActionButton2 = onView(
@@ -107,20 +109,24 @@ public class NewPostTest {
 
         // Check that the title is correct
         ViewInteraction textView = onView(
-                allOf(withId(R.id.post_title), withText(postTitle), isDisplayed()));
+                allOf(withId(R.id.book_title), withText(postTitle), isDisplayed()));
         textView.check(matches(withText(postTitle)));
 
         // Check that the content is correct
         ViewInteraction textView2 = onView(
-                allOf(withId(R.id.post_body), withText(postContent), isDisplayed()));
-        textView2.check(matches(withText(postContent)));
+                allOf(withId(R.id.book_author), withText(postAuthor), isDisplayed()));
+        textView2.check(matches(withText(postAuthor)));
 
-        // Check that it has zero stars
         ViewInteraction textView3 = onView(
-                allOf(withId(R.id.post_num_stars), withText("0"),
-                        withParent(withId(R.id.star_layout)),
-                        isDisplayed()));
-        textView3.check(matches(withText("0")));
+                allOf(withId(R.id.book_isbn), withText(postISBN), isDisplayed()));
+        textView3.check(matches(withText(postISBN)));
+
+        ViewInteraction textView4 = onView(
+                allOf(withId(R.id.book_desc), withText(postDesc), isDisplayed()));
+        textView4.check(matches(withText(postDesc)));
+
+
+
 
     }
 

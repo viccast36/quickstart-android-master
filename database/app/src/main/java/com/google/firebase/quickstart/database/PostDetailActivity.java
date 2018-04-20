@@ -40,7 +40,8 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
 
     private TextView mAuthorView;
     private TextView mTitleView;
-    private TextView mBodyView;
+    private TextView mBookDescView;
+    private TextView misbnView;
     private EditText mCommentField;
     private Button mCommentButton;
     private RecyclerView mCommentsRecycler;
@@ -63,12 +64,13 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
                 .child("post-comments").child(mPostKey);
 
         // Initialize Views
-        mAuthorView = findViewById(R.id.post_author);
-        mTitleView = findViewById(R.id.post_title);
-        mBodyView = findViewById(R.id.post_body);
-        mCommentField = findViewById(R.id.field_comment_text);
+        mAuthorView = findViewById(R.id.book_author);
+        mTitleView = findViewById(R.id.book_title);
+        mBookDescView = findViewById(R.id.book_desc);
+        misbnView = findViewById(R.id.book_isbn);
+        //mCommentField = findViewById(R.id.field_comment_text);
         mCommentButton = findViewById(R.id.button_post_comment);
-        mCommentsRecycler = findViewById(R.id.recycler_comments);
+        //mCommentsRecycler = findViewById(R.id.recycler_comments);
 
         mCommentButton.setOnClickListener(this);
         mCommentsRecycler.setLayoutManager(new LinearLayoutManager(this));
@@ -89,7 +91,8 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
                 // [START_EXCLUDE]
                 mAuthorView.setText(post.author);
                 mTitleView.setText(post.title);
-                mBodyView.setText(post.isbn);
+                misbnView.setText(post.isbn);
+                mBookDescView.setText(post.bookdesc);
                 // [END_EXCLUDE]
             }
 

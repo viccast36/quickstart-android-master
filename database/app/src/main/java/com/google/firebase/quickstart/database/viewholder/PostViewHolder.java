@@ -12,26 +12,17 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
 
     public TextView titleView;
     public TextView authorView;
-    public ImageView starView;
-    public TextView numStarsView;
-    public TextView bodyView;
+    public TextView isbnView;
+    public TextView bookDescView;
 
     public PostViewHolder(View itemView) {
         super(itemView);
         //need to update these values here
-        titleView = itemView.findViewById(R.id.post_title);
-        authorView = itemView.findViewById(R.id.post_author);
-        starView = itemView.findViewById(R.id.star);
-        numStarsView = itemView.findViewById(R.id.post_num_stars);
-        bodyView = itemView.findViewById(R.id.post_body);
+        titleView = itemView.findViewById(R.id.book_title);
+        authorView = itemView.findViewById(R.id.book_author);
+        bookDescView = itemView.findViewById(R.id.book_desc);
+        isbnView = itemView.findViewById(R.id.book_isbn);
+
     }
 
-    public void bindToPost(Post post, View.OnClickListener starClickListener) {
-        titleView.setText(post.title);
-        authorView.setText(post.author);
-        numStarsView.setText(String.valueOf(post.starCount));
-        bodyView.setText(post.author);
-
-        starView.setOnClickListener(starClickListener);
-    }
 }

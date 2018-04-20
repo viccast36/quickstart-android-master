@@ -28,7 +28,6 @@ import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.quickstart.database.fragment.MyPostsFragment;
-import com.google.firebase.quickstart.database.fragment.MyTopPostsFragment;
 import com.google.firebase.quickstart.database.fragment.RecentPostsFragment;
 
 public class  MainActivity extends BaseActivity {
@@ -48,12 +47,12 @@ public class  MainActivity extends BaseActivity {
             private final Fragment[] mFragments = new Fragment[] {
                     new RecentPostsFragment(),
                     new MyPostsFragment(),
-                    new MyTopPostsFragment(),
+
             };
             private final String[] mFragmentNames = new String[] {
                     getString(R.string.my_listing),
                     getString(R.string.messages),
-                    getString(R.string.create_listing)
+
             };
             @Override
             public Fragment getItem(int position) {
