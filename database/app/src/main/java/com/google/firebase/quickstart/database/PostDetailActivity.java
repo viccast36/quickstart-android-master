@@ -64,13 +64,14 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
                 .child("post-comments").child(mPostKey);
 
         // Initialize Views
+        //Should reference the layout
         mAuthorView = findViewById(R.id.book_author);
         mTitleView = findViewById(R.id.book_title);
         mBookDescView = findViewById(R.id.book_desc);
         misbnView = findViewById(R.id.book_isbn);
-        //mCommentField = findViewById(R.id.field_comment_text);
+        mCommentField = findViewById(R.id.field_comment_text);
         mCommentButton = findViewById(R.id.button_post_comment);
-        //mCommentsRecycler = findViewById(R.id.recycler_comments);
+        mCommentsRecycler = findViewById(R.id.recycler_comments);
 
         mCommentButton.setOnClickListener(this);
         mCommentsRecycler.setLayoutManager(new LinearLayoutManager(this));
@@ -137,6 +138,7 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
             postComment();
         }
     }
+
 
     private void postComment() {
         final String uid = getUid();

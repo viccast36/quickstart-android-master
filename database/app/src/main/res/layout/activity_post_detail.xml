@@ -9,35 +9,35 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.google.firebase.quickstart.database.PostDetailActivity">
 
+    //Separate Book title, Book author, Book ISBN into different layouts
     <include
-        android:id="@+id/post_swappr_layout"
+        android:id="@+id/post_author_layout"
         layout="@layout/include_post_swappr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true" />
 
     <include
-        android:id="@+id/post_book_title_layout"
+        android:id="@+id/post_text_layout"
         layout="@layout/include_post_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/post_swappr_layout"
+        android:layout_below="@+id/post_author_layout"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="10dp" />
-
     <TextView
         android:id="@+id/book_desc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/post_book_title_layout"
+        android:layout_below="@+id/post_text_layout"
         android:layout_marginTop="5dp"
         android:textStyle="bold"
         tools:text="@string/lorem" />
 
     <LinearLayout
-        android:id="@+id/book_description"
+        android:id="@+id/comment_form"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -45,16 +45,29 @@
         android:layout_marginTop="20dp"
         android:weightSum="1.0">
 
+        <EditText
+            android:id="@+id/field_comment_text"
+            android:layout_width="0dp"
+            android:layout_weight="0.8"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:hint="Write a comment..."/>
+
         <Button
             android:id="@+id/button_post_comment"
             style="@style/Base.Widget.AppCompat.Button.Borderless"
-            android:layout_width="25dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/book_desc"
+            android:layout_width="0dp"
             android:layout_weight="0.2"
-            android:text="Contact Swappr" />
+            android:layout_height="wrap_content"
+            android:text="Post"/>
 
     </LinearLayout>
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_comments"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/comment_form"
+        tools:listitem="@layout/item_comment" />
 
 </RelativeLayout>
